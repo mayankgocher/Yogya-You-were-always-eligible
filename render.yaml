@@ -1,0 +1,21 @@
+# Render free tier. One web service, no database, no background worker.
+#
+# The free instance sleeps after 15 minutes of inactivity and loses in-memory
+# state when it does, so an in-flight screening does not survive a nap. That is
+# an acceptable trade for a demo; docs/DEPLOYMENT.md explains the two-line
+# change to Postgres-backed checkpointing when it stops being acceptable.
+
+services:
+  - type: web
+    name: yogya
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: YOGYA_LLM_MODEL
+        value: groq/llama-3.3-70b-versatile
+      - key: GROQ_API_KEY
+        sync: false          # set this in the Render dashboard, not in git

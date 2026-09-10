@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+*.egg-info/
+dist/
+build/
+src/yogya/data/corpus/*.pending.json

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yogya — Entitlement Finder</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪪</text></svg>">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">योग्य</span>
+    <div>
+      <h1>Yogya</h1>
+      <p class="tagline">You were always eligible.</p>
+    </div>
+  </div>
+  <div class="status" id="health">checking…</div>
+</header>
+
+<main>
+
+  <!-- ── Intake ─────────────────────────────────────────────── -->
+  <section class="panel" id="intake-panel">
+    <h2>New screening</h2>
+    <p class="hint">
+      Type the family's details the way you would write them in a register.
+      Hindi, English or both. Anything you leave out is asked back, never
+      guessed.
+    </p>
+    <label for="household-id">Household ID</label>
+    <input id="household-id" type="text" value="hh-sunita-devi" spellcheck="false">
+
+    <label for="notes">Intake notes</label>
+    <textarea id="notes" rows="12" spellcheck="false"></textarea>
+
+    <div class="row">
+      <button id="start" class="primary">Screen this family</button>
+      <button id="load-sample" class="ghost">Load sample case</button>
+    </div>
+    <p class="error" id="intake-error" hidden></p>
+  </section>
+
+  <!-- ── The human gate ─────────────────────────────────────── -->
+  <section class="panel gate" id="gate-panel" hidden>
+    <div class="gate-head">
+      <span class="badge" id="gate-kind"></span>
+      <h2 id="gate-title"></h2>
+    </div>
+    <p class="gate-body" id="gate-body"></p>
+    <div id="gate-content"></div>
+    <div class="row" id="gate-actions"></div>
+    <p class="footnote">
+      Nothing is sent to a government portal until you press submit. You are
+      the boss here — the system only prepares the work.
+    </p>
+  </section>
+
+  <!-- ── Results ────────────────────────────────────────────── -->
+  <section class="panel" id="summary-panel" hidden>
+    <h2>Result</h2>
+    <div class="metrics" id="metrics"></div>
+  </section>
+
+  <section class="panel" id="eligibility-panel" hidden>
+    <h2>What this family qualifies for</h2>
+    <div class="tabs" id="elig-tabs">
+      <button class="tab active" data-verdict="eligible">Eligible</button>
+      <button class="tab" data-verdict="needs_info">Needs information</button>
+      <button class="tab" data-verdict="not_eligible">Not eligible</button>
+    </div>
+    <div id="eligibility"></div>
+  </section>
+
+  <section class="panel" id="applications-panel" hidden>
+    <h2>Applications</h2>
+    <div id="applications"></div>
+  </section>
+
+  <section class="panel" id="audit-panel" hidden>
+    <h2>Show the working</h2>
+    <p class="hint">
+      Every decision above, with the clause it came from. This is what you take
+      to the block office when someone says no.
+    </p>
+    <div id="audit" class="audit"></div>
+  </section>
+
+</main>
+
+<footer>
+  <span id="corpus-note"></span>
+  <span>Rules decide eligibility. The model only explains, drafts and fills.</span>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
