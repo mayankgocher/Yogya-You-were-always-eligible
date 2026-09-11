@@ -83,6 +83,7 @@ python -m venv .venv                       # Python 3.12.7 recommended
 # source .venv/bin/activate                # macOS / Linux
 
 pip install -r requirements-dev.txt
+pip install -e . --no-deps                 # puts `yogya` (src/ layout) on the path
 
 python -m pytest                           # 236 tests, ~11 seconds, no network
 python -m yogya.demo                       # the full case, end to end
